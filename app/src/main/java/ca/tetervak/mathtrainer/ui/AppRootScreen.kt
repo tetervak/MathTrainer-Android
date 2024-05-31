@@ -51,7 +51,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -101,7 +100,7 @@ fun AppRootScreen(gameViewModel: GameViewModel = viewModel()) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            GameLayout(
+            ProblemLayout(
                 onUserAnswerChanged = gameViewModel::updateAnswerInput,
                 problemCount = gameUiState.problemCount,
                 numberOfProblems = gameViewModel.numberOfProblems,
@@ -143,7 +142,7 @@ fun AppRootScreen(gameViewModel: GameViewModel = viewModel()) {
                 }
             }
 
-            GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
+            GameScore(score = gameUiState.score, modifier = Modifier.padding(20.dp))
         }
     }
 
@@ -160,7 +159,7 @@ fun AppRootScreen(gameViewModel: GameViewModel = viewModel()) {
 }
 
 @Composable
-fun GameStatus(score: Int, modifier: Modifier = Modifier) {
+fun GameScore(score: Int, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
     ) {
@@ -173,7 +172,7 @@ fun GameStatus(score: Int, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun GameLayout(
+fun ProblemLayout(
     currentProblemText: String,
     problemCount: Int,
     numberOfProblems: Int,
@@ -232,7 +231,7 @@ fun GameLayout(
                     if (isWrongAnswer) {
                         Text(
                             text = stringResource(R.string.wrong_answer_try_again),
-                            color = Color.Red
+                            color = colorScheme.error
                         )
                     } else {
                         Text(stringResource(R.string.enter_your_answer))
