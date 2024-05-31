@@ -16,6 +16,8 @@ import kotlinx.coroutines.flow.update
  */
 class GameViewModel : ViewModel() {
 
+    val numberOfProblems: Int = 10
+
     private val problemFactory: ProblemFactory = ProblemFactory()
 
     private val uiInitState: GameUiState
@@ -42,7 +44,7 @@ class GameViewModel : ViewModel() {
     fun onSkip() {
         updateAnswerInput("")
         _uiState.update { state ->
-            if (state.problemCount == MAX_PROBLEM_COUNT) {
+            if (state.problemCount == numberOfProblems) {
                 state.copy(
                     isGameOver = true
                 )
@@ -60,7 +62,7 @@ class GameViewModel : ViewModel() {
         val problem = uiState.value.problem
         _uiState.update { state ->
             if (problem.checkAnswer(answerInput) == ProblemGrade.RIGHT_ANSWER) {
-                if (state.problemCount == MAX_PROBLEM_COUNT) {
+                if (state.problemCount == numberOfProblems) {
                     state.copy(
                         score = state.score + 1,
                         isWrongAnswer = false,
@@ -81,10 +83,6 @@ class GameViewModel : ViewModel() {
             }
         }
         updateAnswerInput("")
-    }
-
-    companion object{
-        const val MAX_PROBLEM_COUNT: Int = 10
     }
 
 }

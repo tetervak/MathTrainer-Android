@@ -104,6 +104,7 @@ fun AppRootScreen(gameViewModel: GameViewModel = viewModel()) {
             GameLayout(
                 onUserAnswerChanged = gameViewModel::updateAnswerInput,
                 problemCount = gameUiState.problemCount,
+                numberOfProblems = gameViewModel.numberOfProblems,
                 userAnswer = gameViewModel.answerInput,
                 onKeyboardDone = gameViewModel::onSubmit,
                 currentProblemText = gameUiState.problem.text,
@@ -175,6 +176,7 @@ fun GameStatus(score: Int, modifier: Modifier = Modifier) {
 fun GameLayout(
     currentProblemText: String,
     problemCount: Int,
+    numberOfProblems: Int,
     isWrongAnswer: Boolean,
     userAnswer: String,
     onUserAnswerChanged: (String) -> Unit,
@@ -198,7 +200,7 @@ fun GameLayout(
                     .background(colorScheme.surfaceTint)
                     .padding(horizontal = 10.dp, vertical = 4.dp)
                     .align(alignment = Alignment.End),
-                text = stringResource(R.string.problem_count, problemCount),
+                text = stringResource(R.string.problem_count, problemCount, numberOfProblems),
                 style = typography.titleMedium,
                 color = colorScheme.onPrimary
             )
