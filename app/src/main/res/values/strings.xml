@@ -5,11 +5,17 @@
     <string name="skip">Skip</string>
     <string name="submit">Submit</string>
     <string name="score">Score: %d</string>
-    <string name="word_count">%d/10</string>
+    <string name="problem_count">%d/10</string>
     <string name="enter_your_answer">Enter your answer</string>
     <string name="congratulations">Congratulations!</string>
     <string name="you_scored">"You scored: %d"</string>
     <string name="exit">Exit</string>
     <string name="play_again">Play Again</string>
     <string name="wrong_answer">Wrong Answer!</string>
+
+    <string name="about">About</string>
+    <string name="about_game">About Game</string>
+    <string name="programming_example">This is a programming example from an Android application development course.</string>
+    <string name="ok">OK</string>
+    <string name="wrong_answer_try_again">Wrong Answer! Try Again!</string>
 </resources>
